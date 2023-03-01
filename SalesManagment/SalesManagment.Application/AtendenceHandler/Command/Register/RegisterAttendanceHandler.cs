@@ -11,6 +11,7 @@ namespace SalesManagment.Application.AtendenceHandler.Command.Register
         {
             _attendanceRepository = attendanceRepository;
         }
+        // TODO: Apos a empresa for cadastrada  ela vai ser atendida por um vendedor da regiao dela 
         public Task<Unit> Handle(RegisterAttendanceRequest request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
