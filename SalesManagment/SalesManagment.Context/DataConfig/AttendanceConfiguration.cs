@@ -18,6 +18,15 @@ namespace SalesManagment.Context.DataConfig
             builder.Property(e => e.SellerId)
                   .HasColumnType("int");
 
+            builder.Property(e => e.Message)
+                  .HasColumnType("varchar(250)");
+           
+            builder.Property(e => e.StatusAttendance)
+                  .HasColumnType("int");
+
+            builder.Property(e => e.Nota)
+                  .HasColumnType("int");
+
             builder.Property(e => e.Register)
                   .HasColumnType("DateTime");
 

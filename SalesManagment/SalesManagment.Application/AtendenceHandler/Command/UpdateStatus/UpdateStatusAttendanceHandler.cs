@@ -12,7 +12,7 @@ namespace SalesManagment.Application.AtendenceHandler.Command.UpdateStatus
             _attendanceRepository = attendanceRepository;
 
         }
-        public Task<Unit> Handle(UpdateStatusAttendanceRequest request, CancellationToken cancellationToken)
+        public Task Handle(UpdateStatusAttendanceRequest request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

@@ -26,7 +26,7 @@ namespace SalesManagment.Context.Repository
             _dbSet.Remove(entity);
         }
 
-        public async Task<T> Get(Expression<Func<T, bool>> predicate)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
         {
            var result = await _dbSet.FirstOrDefaultAsync(predicate);
            
@@ -42,6 +42,13 @@ namespace SalesManagment.Context.Repository
         public void Update(T entity)
         {
             _dbSet.Attach(entity);
+        }
+
+        public T? Get(Expression<Func<T, bool>> predicate)
+        {
+            var result =  _dbSet.FirstOrDefault(predicate);
+
+            return result;
         }
     }
 }

@@ -1,4 +1,7 @@
 ﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using NUnit.Framework;
+using SalesManagment.Application.RegionHandler.Command;
 using SalesManagment.Contract.RegionContracts;
 using System;
 using System.Collections.Generic;
@@ -8,23 +11,26 @@ using System.Threading.Tasks;
 
 namespace Sales.Managment.Teste.RegionTestes
 {
-    [TestClass]
+    [TestFixture]
     public class RegionTestes
     {
-        private readonly IMediator _mediator;
 
-        public RegionTestes(IMediator mediator)
+        private IMediator _mediator;
+
+       
+            public RegionTestes(IMediator mediator)
         {
             _mediator = mediator;
         }
-        [TestMethod]
-        public  void UpdateRegion() 
+
+        [Test]
+        public async void RegisterRegions() 
         {
-            var request = new RegionRequest(true);
+            var result = await _mediator.Send(new RegionRequest(true));
 
-            var result =  _mediator.Send(request);
-
-            Assert.AreEqual("Base de dados atualizada com sucesso", result);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Base de dados atualizada com sucesso", result);
         }
+
+
     }
 }

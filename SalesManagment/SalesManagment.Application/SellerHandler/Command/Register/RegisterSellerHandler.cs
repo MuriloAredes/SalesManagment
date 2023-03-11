@@ -38,7 +38,7 @@ namespace SalesManagment.Application.SellerHandler.Command.Register
             #endregion
 
             #region ValidatorHasUser
-            var user = await _sellerRespository.Get(e => e.Email.Equals(request.Email));
+            var user = await _sellerRespository.GetAsync(e => e.Email.Equals(request.Email));
 
             var validatorEmail = _validatorEmail.Validate(new CheckEmailRequest { User = user});
 

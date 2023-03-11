@@ -9,6 +9,7 @@ using SalesManagment.Context.Persistence;
 using SalesManagment.Context.Persistence.interfaces;
 using SalesManagment.Context.Repository;
 using SalesManagment.Context.Repository.interfaces;
+using System.Net.NetworkInformation;
 using System.Reflection;
 
 
@@ -22,7 +23,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var assembly = Assembly.Load("SalesManagment.Application");
 
-string strConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+
+string? strConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
@@ -41,7 +45,8 @@ builder.Services.AddScoped<ISellerRepository, SellerRepository>();
 builder.Services.AddScoped<ISearchByZipCodeInteractor, SearchByZipCodeInteractor>();   
 builder.Services.AddTransient<IRepository<T>, Repository<T>>();
 builder.Services.AddValidatorsFromAssembly(assembly);
-builder.Services.AddMediatR(assembly);
+//builder.Services.AddMediatR(assembly);
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Ping).Assembly));
 
 
 var app = builder.Build();

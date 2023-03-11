@@ -11,7 +11,8 @@ namespace SalesManagment.Application.Seller.Command.Update
         {
             _sellerRepository = sellerRepository;
         }
-        public Task<Unit> Handle(UpdateSellerRequest request, CancellationToken cancellationToken)
+
+        public Task Handle(UpdateSellerRequest request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
