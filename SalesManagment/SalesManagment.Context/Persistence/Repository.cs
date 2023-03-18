@@ -15,11 +15,11 @@ namespace SalesManagment.Context.Repository
             _context = context;
             _dbSet = _context.Set<T>();
         }
-        public async Task Add(T entity)
+        public async Task<T> Add(T entity)
         {
-            await _dbSet.AddAsync(entity);
+           var result = await _dbSet.AddAsync(entity);
            await _context.SaveChangesAsync();
-
+            return result.Entity;
         }
         public void Delete(T entity)
         {

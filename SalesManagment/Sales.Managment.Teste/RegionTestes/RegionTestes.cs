@@ -31,6 +31,14 @@ namespace Sales.Managment.Teste.RegionTestes
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Base de dados atualizada com sucesso", result);
         }
 
+        [Test]
+        public void testando () 
+        {
+            bool status = true;
+
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(status);
+        }
+
 
     }
 }
