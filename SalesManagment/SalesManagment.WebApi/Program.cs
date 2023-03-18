@@ -1,7 +1,9 @@
+using AutoFixture;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NPOI.SS.Formula.Functions;
+using NPOI.SS.UserModel;
 using SalesManagment.Application.Interactor;
 using SalesManagment.Application.Interactor.interfaces;
 using SalesManagment.Context.Data;
@@ -48,6 +50,9 @@ builder.Services.AddValidatorsFromAssembly(assembly);
 //builder.Services.AddMediatR(assembly);
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Ping).Assembly));
 
+var serviceProvider = builder.Services.BuildServiceProvider();
+var mediator = serviceProvider.GetService<IMediator>();
+IFixture fixture
 
 var app = builder.Build();
 

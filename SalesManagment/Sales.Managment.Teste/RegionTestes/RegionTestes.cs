@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using NUnit.Framework;
 using SalesManagment.Application.RegionHandler.Command;
 using SalesManagment.Contract.RegionContracts;
@@ -26,7 +27,10 @@ namespace Sales.Managment.Teste.RegionTestes
         [Test]
         public async void RegisterRegions() 
         {
-            var result = await _mediator.Send(new RegionRequest(true));
+            var request = new Mock<RegionRequest> ();
+
+            
+            var result = await _mediator.Send(request);
 
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Base de dados atualizada com sucesso", result);
         }
